@@ -9,6 +9,9 @@ import { RoomListComponent } from './room-list/room-list.component';
 import { UpdateRoomComponent } from './update-room/update-room.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AlertaComponent } from './shared/alerta/alerta.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './shared/material/material.module';
 
 @NgModule({
   declarations: [
@@ -16,14 +19,16 @@ import { FormsModule } from '@angular/forms';
     CreateRoomComponent,
     RoomDetailsComponent,
     RoomListComponent,
-    UpdateRoomComponent
-    
+    UpdateRoomComponent,
+    AlertaComponent,    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

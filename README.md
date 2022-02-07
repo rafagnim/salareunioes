@@ -14,7 +14,9 @@ Seguem as versões utilizadas no desenvolvimento do front:
 
 Em relação ao projeto desenvolvido em aula, fiz as seguintes alterações:
 
-- Utilizei o MySQL para as APIs, alterando as configurações originais para isso, apenas por preferêmcia;
+- Utilizei o MySQL para as APIs, alterando as configurações originais para isso, apenas por preferência;
+- Inclusão desta rota: { path: '**', component: RoomListComponent } para que vá para a Room Lista quando for informado qualquer endpoint não roteado;
+- Inclusão do botão BackToRoomList também quando acessadas as opções AddRoom e Update (já tinha o método gotoList() com o "router.navigate", mas por algum problema não constava do HTML original; 
 - 
 
 JSON - Documentação:
@@ -50,7 +52,10 @@ Pré-requisitos para a execução do projeto:
 - Java 11.
 - Maven 3.6.3 ou versões superiores.
 - Intellj IDEA Community Edition ou outra IDE.
-- Para a parte do Angular, ver imagem acima.
+- Para a parte do Angular, ver imagem acima e, além disso acrescentar a dependência a seguir:
+  
+  ng add @angular/material (observando que são importadas em "material.module.ts").
+- 
 
 <hr>
 <hr>

@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'add', component: CreateRoomComponent },
   { path: 'update/:id', component: UpdateRoomComponent },
   { path: 'details/:id', component: RoomDetailsComponent },
+  { path: '**', component: RoomListComponent },
 ];
 
 @NgModule({

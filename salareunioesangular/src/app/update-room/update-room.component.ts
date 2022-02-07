@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Room } from '../room';
+import { RoomListComponent } from '../room-list/room-list.component';
 import { RoomService } from '../room.service';
 
 @Component({
@@ -14,6 +16,7 @@ export class UpdateRoomComponent implements OnInit {
   room!: Room;
   submitted = false;
 
+  roomsAqui!: Observable<Room[]>
 
   constructor(private route: ActivatedRoute,private router: Router,
     private roomService: RoomService) { }

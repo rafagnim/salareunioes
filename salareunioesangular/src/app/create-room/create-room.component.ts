@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Room } from '../room';
 import { RoomService } from '../room.service';
+import { Alerta } from '../shared/alerta/alerta';
+import { AlertaComponent } from '../shared/alerta/alerta.component';
 
 @Component({
   selector: 'app-create-room',
@@ -13,7 +16,7 @@ export class CreateRoomComponent implements OnInit {
   room: Room = new Room();
   submitted = false;
 
-  constructor(private roomService: RoomService,
+  constructor(private roomService: RoomService, public dialog: MatDialog,
     private router: Router) { }
 
   ngOnInit() {
@@ -26,9 +29,35 @@ export class CreateRoomComponent implements OnInit {
 
   save() {
     this.roomService.createRoom(this.room)
-      .subscribe(data => console.log(data), error => console.log(error));
-    this.room = new Room();
-    this.gotoList();
+      .subscribe(() => {
+        const config = {
+          data: {
+            btnSucesso: 'Back to Room List',
+            btnCancelar: 'Add a new movie',
+            corBtnCancelar: 'primary',
+            possuirBtnFechar: true
+          } as Alerta
+        };
+        const dialogRef = this.dialog.open(AlertaComponent, config);
+        dialogRef.afterClosed().subscribe((opcao: boolean) => {
+          if (opcao) {
+            this.gotoList();
+          } else {
+            this.newRoom();
+          }
+        });
+      },
+      () => {
+        const config = {
+          data: {
+            titulo: 'Error!',
+            descricao: 'It was not possible save your register, please try again',
+            corBtnSucesso: 'warn',
+            btnSucesso: 'Close'
+          } as Alerta
+        };
+        this.dialog.open(AlertaComponent, config);
+      });
   }
 
   onSubmit() {

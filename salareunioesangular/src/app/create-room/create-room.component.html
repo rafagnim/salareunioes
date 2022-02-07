@@ -17,14 +17,38 @@
     </div>
 
     <div class="form-group">
-        <label for="name">endHour</label>
-        <input type="text" class="form-control" id="endHour" required [(ngModel)]="room.endHour" name="endHour">
+      <label for="name">endHour</label>
+      <input type="text" class="form-control" id="endHour" required [(ngModel)]="room.endHour" name="endHour">
+    </div>
+    <!--
+    <button type="submit" class="btn btn-success">Submit</button>
+  -->
+    <mat-card-actions>
+
+      <div>
+        <button type="submit" color="primary" mat-raised-button>Submit</button>
       </div>
 
-    <button type="submit" class="btn btn-success">Submit</button>
+      <div [hidden]="!submitted">
+        <button class="btn btn-success" (click)="newRoom()">Add</button>
+      </div>
+
+      <br />
+
+      <div>
+        <button type="reset" color="warn" mat-raised-button (click)="gotoList()">Back to Room List</button>
+      </div>
+
+    </mat-card-actions>
   </form>
 </div>
 
+<!--
 <div [hidden]="!submitted">
-  <button class="btn btn-success" (click)="newRoom()">Add</button> -->
+  <button class="btn btn-success" (click)="newRoom()">Add</button> 
 </div>
+<br />
+<div>
+  <button (click)="gotoList()" class="btn btn-primary">Back to Room List</button><br>
+</div>
+-->

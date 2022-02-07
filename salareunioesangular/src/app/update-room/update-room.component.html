@@ -1,4 +1,3 @@
-
 <h3>Update Room</h3>
 <div [hidden]="submitted" style="width: 400px;">
   <form (ngSubmit)="onSubmit()">
@@ -21,7 +20,12 @@
       <label for="name">end Hour</label>
       <input type="text" class="form-control" id="endHour" required [(ngModel)]="room.endHour" name="endHour">
     </div>
-
-    <button type="submit" class="btn btn-success">Submit</button>
+    <div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+    <br />
+    <div>
+      <button (click)="gotoList()" class="btn btn-primary">Back to Room List</button><br>
+    </div>
   </form>
 </div>
