@@ -7,7 +7,7 @@ Este projeto foi desenvolvido em aula proporcionada pela Digital Innovation One,
 Kamila Santos.
 
 Foi desenvolvida uma API para ser consumida em projeto desenvolvido no Angular.
-Trata-se de um projeto bastante simples mas que permite compreender  bem o funcionamento do cosnumo de uma API pelo front.
+Trata-se de um projeto bastante simples mas que permite compreender  bem o funcionamento do consumo de uma API pelo front.
 Seguem as versões utilizadas no desenvolvimento do front:
 
 ![Screenshot](requisitos.jpg)
@@ -15,9 +15,9 @@ Seguem as versões utilizadas no desenvolvimento do front:
 Em relação ao projeto desenvolvido em aula, fiz as seguintes alterações:
 
 - Utilizei o MySQL para as APIs, alterando as configurações originais para isso, apenas por preferência;
-- Inclusão desta rota: { path: '**', component: RoomListComponent } para que vá para a Room Lista quando for informado qualquer endpoint não roteado;
+- Inclusão desta rota: { path: '**', component: RoomListComponent } para que vá para a Room List quando for informado qualquer endpoint não roteado;
 - Inclusão do botão BackToRoomList também quando acessadas as opções AddRoom e Update (já tinha o método gotoList() com o "router.navigate", mas por algum problema não constava do HTML original; 
-- 
+- Inclusão de botão de Alerta/Modal quando inserido, alterado ou deletado novo item. Para o deletar inserida opção de confirmar ou cancelar antes de prosseguir.
 
 JSON - Documentação:
 

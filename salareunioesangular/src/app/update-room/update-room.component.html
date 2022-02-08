@@ -20,12 +20,17 @@
       <label for="name">end Hour</label>
       <input type="text" class="form-control" id="endHour" required [(ngModel)]="room.endHour" name="endHour">
     </div>
-    <div>
-      <button type="submit" class="btn btn-success">Submit</button>
-    </div>
-    <br />
-    <div>
-      <button (click)="gotoList()" class="btn btn-primary">Back to Room List</button><br>
-    </div>
+    
+    <mat-card-actions>
+
+      <div>
+        <button type="submit" color="primary" mat-raised-button>Submit</button>
+      </div>
+      <br />
+      <div>
+        <button type="reset" color="warn" mat-raised-button (click)="gotoList()">Back to Room List</button>
+      </div>
+
+    </mat-card-actions>
   </form>
 </div>

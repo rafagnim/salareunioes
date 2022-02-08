@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { AlertaComponent } from './shared/alerta/alerta.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material/material.module';
+import { AlertadeleteComponent } from './shared/alertadelete/alertadelete.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MaterialModule } from './shared/material/material.module';
     RoomDetailsComponent,
     RoomListComponent,
     UpdateRoomComponent,
-    AlertaComponent,    
+    AlertaComponent,
+    AlertadeleteComponent,    
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Room } from '../room';
 import { RoomListComponent } from '../room-list/room-list.component';
 import { RoomService } from '../room.service';
+import { Alerta } from '../shared/alerta/alerta';
+import { AlertaComponent } from '../shared/alerta/alerta.component';
 
 @Component({
   selector: 'app-update-room',
@@ -18,7 +21,7 @@ export class UpdateRoomComponent implements OnInit {
 
   roomsAqui!: Observable<Room[]>
 
-  constructor(private route: ActivatedRoute,private router: Router,
+  constructor(private route: ActivatedRoute,private router: Router, public dialog: MatDialog,
     private roomService: RoomService) { }
 
   ngOnInit() {
@@ -30,14 +33,36 @@ export class UpdateRoomComponent implements OnInit {
       .subscribe(data => {
         console.log(data)
         this.room = data;
+        
       }, error => console.log(error));
   }
 
   updateRoom() {
     this.roomService.updateRoom(this.id, this.room)
-      .subscribe(data => console.log(data), error => console.log(error));
-    this.room = new Room();
-    this.gotoList();
+      .subscribe(() => {
+        const config = {
+          data: {
+            btnSucesso: 'Back to Room List',
+          } as Alerta
+        };
+        const dialogRef = this.dialog.open(AlertaComponent, config);
+        dialogRef.afterClosed().subscribe((opcao: boolean) => {
+          if (opcao) {
+            this.gotoList();
+          }
+        });
+      },
+      () => {
+        const config = {
+          data: {
+            titulo: 'Error!',
+            descricao: 'It was not possible save your register, please try again',
+            corBtnSucesso: 'warn',
+            btnSucesso: 'Close'
+          } as Alerta
+        };
+        this.dialog.open(AlertaComponent, config);
+      });
   }
 
   onSubmit() {
